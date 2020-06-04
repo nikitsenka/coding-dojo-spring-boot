@@ -16,7 +16,14 @@ Run DB
 
 Run App
 
-```javascript ```
+```
+ ./mvnw spring-boot:run
+```
+
+Run Tests
+```
+ ./mvnw test
+```
 
 ### Production readiness plan (deployment and operational readiness out of scope)
  - fix issues and make app runnable

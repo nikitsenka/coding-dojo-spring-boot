@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/database
+    username: postgres
+    password: password
+  jpa.hibernate.ddl-auto: create-drop
+
+client:
+  openweathermap:
+    app.id: 439d4b804bc8187953eb36d2a8c26a02
+    url: https://samples.openweathermap.org/data/2.5/weather?q={city}&APPID={appid}
