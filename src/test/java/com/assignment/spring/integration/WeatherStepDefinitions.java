@@ -1,9 +1,11 @@
 package com.assignment.spring.integration;
 
+import com.assignment.spring.client.openweathermap.WeatherClient;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
@@ -26,6 +28,12 @@ public class WeatherStepDefinitions {
 
     @LocalServerPort
     int port;
+
+    @Autowired
+    private WeatherClient weatherClient;
+    /**
+     * Http client used to call system under test.
+     */
     private HttpClient httpClient;
     private String baseUrl;
     private HttpResponse<String> serviceResponse;
@@ -41,15 +49,26 @@ public class WeatherStepDefinitions {
 
     }
 
+    @Given("^Service has  invalid appid configured$")
+    public void service_misconfigured() {
+        weatherClient.setAppId("");
+    }
+
     @When("^Client asks service for weather in (.*) city$")
     public void ask_weather_in(String city) throws IOException, InterruptedException {
-        serviceResponse = get("/weather?city=London");
+        serviceResponse = get("/weather?city=" + city);
     }
 
     @Then("^Service return weather info$")
-    public void weather_returned() throws IOException, InterruptedException {
+    public void weather_returned() {
         assertEquals(200, serviceResponse.statusCode());
         assertThat(serviceResponse.body(), containsString("London"));
+    }
+
+    @Then("^Service return error$")
+    public void error_returned() {
+        assertEquals(500, serviceResponse.statusCode());
+        assertThat(serviceResponse.body(), containsString("Internal Server Error"));
     }
 
 
