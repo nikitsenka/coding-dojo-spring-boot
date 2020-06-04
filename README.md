@@ -25,6 +25,12 @@ Run Tests
  ./mvnw test
 ```
 
+Run static code analysis
+
+```
+ ./mvnw checkstyle:check
+```
+
 ### Production readiness plan (deployment and operational readiness out of scope)
  - fix issues and make app runnable
  - add bdd integration tests

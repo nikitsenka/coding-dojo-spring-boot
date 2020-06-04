@@ -12,10 +12,12 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  */
 public final class TestUtils {
 
-    private TestUtils() {}
+    private TestUtils() {
+    }
 
     /**
      * Return file content as string.
+     *
      * @param path path to file
      * @return file content as string
      */

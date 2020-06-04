@@ -9,16 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest controller for weather functionality.
+ */
 @RestController
 public class WeatherController {
 
+    /**
+     * Weather client.
+     */
     @Autowired
     private WeatherClient weatherClient;
 
+    /**
+     * Weather repository.
+     */
     @Autowired
     private WeatherRepository weatherRepository;
 
-
+    /**
+     * Rest API for getting weather info.
+     * @param city name
+     * @return weather entity
+     */
     @RequestMapping("/weather")
     public WeatherEntity weather(@RequestParam String city) {
         return mapper(weatherClient.getWeather(city));
