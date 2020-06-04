@@ -41,7 +41,7 @@ public class WeatherClient {
      * @return openweathermap response
      */
     public WeatherResponse getWeather(String city) {
-        Assert.notNull(city, "city param required");
+        Assert.hasText(city, "city param required");
         String url = weatherApiUrl.replace("{city}", city).replace("{appid}", appId);
         ResponseEntity<WeatherResponse> responseEntity = restTemplate.getForEntity(url, WeatherResponse.class);
         WeatherResponse body = responseEntity.getBody();
