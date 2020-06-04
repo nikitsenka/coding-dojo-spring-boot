@@ -49,7 +49,7 @@ public class WeatherStepDefinitions {
 
     }
 
-    @Given("^Service has  invalid appid configured$")
+    @Given("^Service has invalid appid configured$")
     public void service_misconfigured() {
         weatherClient.setAppId("");
     }
@@ -68,7 +68,7 @@ public class WeatherStepDefinitions {
     @Then("^Service return error$")
     public void error_returned() {
         assertEquals(500, serviceResponse.statusCode());
-        assertThat(serviceResponse.body(), containsString("Internal Server Error"));
+        assertThat(serviceResponse.body(), containsString("weather service return error"));
     }
 
 

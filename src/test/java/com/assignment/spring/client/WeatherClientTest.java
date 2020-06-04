@@ -38,6 +38,7 @@ class WeatherClientTest {
     @Test
     void getWeather_shouldReturnResponse_whenServiceAvailable() {
         WeatherResponse expected = new WeatherResponse();
+        expected.setCod(200);
         when(restTemplate.getForEntity(anyString(), any())).thenReturn(new ResponseEntity(expected, HttpStatus.OK));
 
         WeatherResponse actual = weatherClient.getWeather("London");
@@ -50,6 +51,20 @@ class WeatherClientTest {
     @Test
     void getWeather_shouldThrowException_whenBadParam() {
         assertThrows(IllegalArgumentException.class, () -> weatherClient.getWeather(null));
+    }
+
+    @Test
+    void getWeather_shouldThrowException_whenServiceInternalBusinessError() {
+        WeatherResponse response = new WeatherResponse();
+        response.setCod(401);
+        when(restTemplate.getForEntity(anyString(), any())).thenReturn(new ResponseEntity(new WeatherResponse(), HttpStatus.OK));
+        assertThrows(RuntimeException.class, () -> weatherClient.getWeather("London"));
+    }
+
+    @Test
+    void getWeather_shouldThrowException_whenServiceInternalServerError() {
+        when(restTemplate.getForEntity(anyString(), any())).thenReturn(new ResponseEntity(new WeatherResponse(), HttpStatus.INTERNAL_SERVER_ERROR));
+        assertThrows(RuntimeException.class, () -> weatherClient.getWeather("London"));
     }
 
 }

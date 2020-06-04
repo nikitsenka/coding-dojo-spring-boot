@@ -1,7 +1,7 @@
 package com.assignment.spring.api;
 
-import com.assignment.spring.client.openweathermap.model.WeatherResponse;
 import com.assignment.spring.client.openweathermap.WeatherClient;
+import com.assignment.spring.client.openweathermap.model.WeatherResponse;
 import com.assignment.spring.domain.entity.WeatherEntity;
 import com.assignment.spring.domain.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,8 @@ public class WeatherController {
 
     @RequestMapping("/weather")
     public WeatherEntity weather(@RequestParam String city) {
-        WeatherResponse weatherResponse = weatherClient.getWeather(city);
-        return mapper(weatherResponse);
+        return mapper(weatherClient.getWeather(city));
     }
-
 
     private WeatherEntity mapper(WeatherResponse response) {
         WeatherEntity entity = new WeatherEntity();
