@@ -78,14 +78,13 @@ Core principles:
  - SCM is the ultimate source of truth about project version. Git tags and github releases contains all information about project versions.
  - Semantic Versioning format should be followed when specifying version number (SemVer 2 for ex: v0.1.1).
  
-### Production readiness plan (deployment, DB migration and operational readiness are out of the scope)
+### Production readiness plan (deployment, DB migration, performance improvements and operational readiness are out of the scope)
  - fix issues and make app runnable
  - add bdd integration tests
  - refactor and add unit tests
  - improve error handling
  - add static code analysis checks
  - add gatling performance tests
- - improve performance and verify
  - add actuator, versioning and build info
  - improve documentation
  - improve logging
