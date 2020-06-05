@@ -47,7 +47,7 @@ Run Sonar Scanner
    -Dsonar.login=<token> \
    -Dsonar.exclusions="**/Application.java,**/model/**"
 ```
-if any questions please check this article https://dzone.com/articles/sonarqube-scanning-in-15-minutes-2
+
 Sonar report example:
 ![](./sonar-report.png)
 
