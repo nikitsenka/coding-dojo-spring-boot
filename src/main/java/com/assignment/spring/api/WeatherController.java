@@ -5,7 +5,7 @@ import com.assignment.spring.client.openweathermap.model.WeatherResponse;
 import com.assignment.spring.domain.entity.WeatherEntity;
 import com.assignment.spring.domain.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,10 +29,11 @@ public class WeatherController {
 
     /**
      * Rest API for getting weather info.
+     *
      * @param city name
      * @return weather entity
      */
-    @RequestMapping("/weather")
+    @GetMapping("/weather")
     public WeatherEntity weather(@RequestParam String city) {
         return mapper(weatherClient.getWeather(city));
     }

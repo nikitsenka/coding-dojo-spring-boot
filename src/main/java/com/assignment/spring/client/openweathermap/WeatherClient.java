@@ -1,5 +1,6 @@
 package com.assignment.spring.client.openweathermap;
 
+import com.assignment.spring.client.openweathermap.exception.WeatherClientException;
 import com.assignment.spring.client.openweathermap.model.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,8 +48,7 @@ public class WeatherClient {
         WeatherResponse body = responseEntity.getBody();
         if (SUCCESSFUL != responseEntity.getStatusCode().series()
                 || !Integer.valueOf(HttpStatus.OK.value()).equals(body.getCod())) {
-            //TODO enhance error response info
-            throw new RuntimeException("weather service return error");
+            throw new WeatherClientException("weather service return error");
         }
         return body;
     }

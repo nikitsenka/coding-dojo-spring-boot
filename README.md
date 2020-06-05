@@ -20,7 +20,7 @@ Run app
  ./mvnw spring-boot:run
 ```
 
-Run tests
+Run tests. Code coverage report provided automatically by Jacoco.
 ```
  ./mvnw test
 ```
@@ -31,11 +31,33 @@ Run static code analysis
  ./mvnw checkstyle:check
 ```
 
+Run SonarQube 
+
+```
+ docker run -d --name sonarqube -p 80:9000 -p 9092:9092 sonarqube
+```
+Open http://localhost:9000/. Create new project with name `weather` and generate new token.
+
+Run Sonar Scanner
+
+```
+ ./mvnw sonar:sonar \
+   -Dsonar.projectKey=weather \
+   -Dsonar.host.url=http://localhost \
+   -Dsonar.login=<token> \
+   -Dsonar.exclusions="**/Application.java,**/model/**"
+```
+if any questions please check this article https://dzone.com/articles/sonarqube-scanning-in-15-minutes-2
+Sonar report example:
+![](./sonar-report.png)
+
 Run performance tests
 ```
  cd performance
  ./gradlew gatlingRun
 ```
+Gatling report example:
+![](./gatling-report.png)
 
 ### Actuator
 Actuator endpoints let you monitor and check health of the application.
@@ -61,4 +83,5 @@ Core principles:
  - add actuator, versioning and build info
  - improve documentation
  - improve logging
+ - add SonarQube check, fix issues and jacoco tests coverage
  - review
