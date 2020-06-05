@@ -14,13 +14,13 @@ Run DB
 
 ```docker run -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgres -e POSTGRES_DB=database -p 5432:5432 -d postgres:12```
 
-Run App
+Run app
 
 ```
  ./mvnw spring-boot:run
 ```
 
-Run Tests
+Run tests
 ```
  ./mvnw test
 ```
@@ -29,6 +29,12 @@ Run static code analysis
 
 ```
  ./mvnw checkstyle:check
+```
+
+Run performance tests
+```
+ cd performance
+ ./gradlew gatlingRun
 ```
 
 ### Actuator

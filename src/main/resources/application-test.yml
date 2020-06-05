@@ -3,7 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/database
     username: postgres
     password: password
-  jpa.hibernate.ddl-auto: create-drop
+  jpa:
+    hibernate.ddl-auto: create-drop
 
 client:
   openweathermap:
