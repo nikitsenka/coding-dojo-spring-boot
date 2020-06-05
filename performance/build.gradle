@@ -1,0 +1,19 @@
+plugins {
+    id "com.github.lkishalmi.gatling" version "3.0.2"
+}
+
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+gatling {
+    toolVersion = "3.0.0"
+    scalaVersion = "2.12.3"
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.module:jackson-module-scala_2.13:2.10.1'
+    gatling 'io.gatling.highcharts:gatling-highcharts:3.0.0'
+}

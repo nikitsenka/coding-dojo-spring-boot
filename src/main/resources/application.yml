@@ -1,1 +1,10 @@
+spring:
+  datasource:
+    url: ${POSTGRES_DB_URL}
+    username: ${POSTGRES_DB_USER}
+    password: ${POSTGRES_DB_PASSWORD}
 
+client:
+  openweathermap:
+    app.id: ${OPENWEATHERMAP_APP_ID}
+    url: ${OPENWEATHERMAP_URL}
