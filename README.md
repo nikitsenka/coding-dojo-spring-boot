@@ -59,6 +59,12 @@ Run performance tests
 Gatling report example:
 ![](./gatling-report.png)
 
+Build and run in production as Docker container
+```
+ ./mvnw clean package
+ docker build . -t coding-dojo-spring-boot
+```
+
 ### Actuator
 Actuator endpoints let you monitor and check health of the application.
  -  /actuator - Main endpoint to list all available actuator api 
